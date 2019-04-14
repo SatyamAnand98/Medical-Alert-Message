@@ -6,7 +6,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Java_sms_requesthttp {
+public class Java_sms_requesthttp_main {
 
         public static void main(String[] args) {
         	String message="",PhoneNo="",Name="",gender;
