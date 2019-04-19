@@ -1,8 +1,11 @@
 package healthcare;
 
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,7 @@ public class Java_sms_requesthttp_main {
 
         public static void main(String[] args) {
         	String message="",PhoneNo="",Name="",gender;
-        	int Glucose,Calcium,Cholestrol,Rbc,Wbc,Hemoglobin,Platelet,Sodium,Potassium,Chloride;
+        	double Glucose,Calcium,Cholestrol,Rbc,Wbc,Hemoglobin,Platelet,Sodium,Potassium,Chloride;
         	List<String> detailList = new ArrayList<String>();
     	    List<String> valueList = new ArrayList<String>();
     	    
@@ -22,13 +25,10 @@ public class Java_sms_requesthttp_main {
     	            valueList.add(pair[1]);
     	        }
     	        gender = valueList.get(1);
-//                System.out.println(gender);
     	        Name=valueList.get(0);
     	        PhoneNo=valueList.get(2);
-//    	        System.out.println(message);
     	        if(gender.equals("M"))
     	        {
-//                  System.out.println("True");
     	          Male m=new Male();
     	          m.readfile();
     	          Glucose = m.glucose();
@@ -41,26 +41,26 @@ public class Java_sms_requesthttp_main {
     	          Sodium = m.sodium();
     	          Potassium = m.potassium();
     	          Chloride = m.chloride();
-    	          if(Glucose==1||Glucose==2)
-    	        	  message = message+" Glucose";
-    	          if(Calcium==1||Calcium==2)
-    	        	  message = message+" Calcium";
-    	          if(Cholestrol==1||Cholestrol==2)
-    	        	  message = message+" Cholestrol";
-    	          if(Rbc==1||Rbc==2)
-    	        	  message = message+" Rbc";
-    	          if(Wbc==1||Wbc==2)
-    	        	  message = message+" Wbc";
-    	          if(Hemoglobin==1||Hemoglobin==2)
-    	        	  message = message+" Hemoglobin";
-    	          if(Platelet==1||Platelet==2)
-    	        	  message = message+" Platelet";
-    	          if(Sodium==1||Sodium==2)
-    	        	  message = message+" Sodium";
-    	          if(Potassium==1||Potassium==2)
-    	        	  message = message+" Potassium";
-    	          if(Chloride==1||Chloride==2)
-    	        	  message = message+" Chloride";
+    	          if(Glucose!=0)
+    	        	  message = message+"\nGlucose is critical @ "+Glucose;
+    	          if(Calcium!=0)
+    	        	  message = message+"\nCalcium is critical @ "+Calcium;
+    	          if(Cholestrol!=0)
+    	        	  message = message+"\nCholestrol is critical @ "+Cholestrol;
+    	          if(Rbc!=0)
+    	        	  message = message+"\nRbc is critical @ "+Rbc;
+    	          if(Wbc!=0)
+    	        	  message = message+"\nWbc is critical @ "+Wbc;
+    	          if(Hemoglobin!=0)
+    	        	  message = message+"\nHemoglobin is cricat @ "+Hemoglobin;
+    	          if(Platelet!=0)
+    	        	  message = message+"\nPlatelet is critical @ "+Platelet;
+    	          if(Sodium!=0)
+    	        	  message = message+"\nSodium is critical @ "+Sodium;
+    	          if(Potassium!=0)
+    	        	  message = message+"\nPotassium is critical @ "+Potassium;
+    	          if(Chloride!=0)
+    	        	  message = message+"\nChloride is critical @ "+Chloride;
     	        }
     	         else if(gender.equals("F"))
     	         {
@@ -100,39 +100,61 @@ public class Java_sms_requesthttp_main {
     	      }catch(Exception e) {
     	    	  System.out.println("Non");
     	      }
-                try {
-                        String recipient = PhoneNo;
-                        message = "Dear "+Name+" you have critical situation regarding"+message+" Please visit Doctor ASAP!!";
-                        String username = "admin";
-                        String password = "741852963";
-                        String originator = "+919513868175";
+	                
+	                //Multiple mobiles numbers separated by comma
+	                String mobiles = PhoneNo;
+	                //Sender ID,While using route4 sender id should be 6 characters long.
+	                String senderId = "SSRLAB";
+	                //Your message to send, Add URL encoding here.
+//	                String message = "Test message";
+	                if(message.equals("")) {
+	                	message = "Dear "+Name+" All your Blood Reports are NORMAL.";
+	                }
+	                else
+	                	message = "Dear,\n"+Name+"\n you have a situation "+message+"\nPlease visit Doctor ASAP!!";
+	                //define route
+//	                String route="1";
 
-                        String requestUrl  = "http://127.0.0.1:9501/api?action=sendmessage&" +
-            "username=" + URLEncoder.encode(username, "UTF-8") +
-            "&password=" + URLEncoder.encode(password, "UTF-8") +
-            "&recipient=" + URLEncoder.encode(recipient, "UTF-8") +
-            "&messagetype=SMS:TEXT" +
-            "&messagedata=" + URLEncoder.encode(message , "UTF-8") +
-            "&originator=" + URLEncoder.encode(originator, "UTF-8") +
-            "&serviceprovider=GSMModem1" +
-            "&responseformat=html";
-                        
-//                        System.out.println(requestUrl);
-//                        System.out.println(message);
+	                //Prepare Url
+	                URLConnection myURLConnection=null;
+	                URL myURL=null;
+	                BufferedReader reader=null;
 
+	                //encoding message
+	                String encoded_message=URLEncoder.encode(message);
 
+	                //Send SMS API
+	                String mainUrl="http://api.msg91.com/api/sendhttp.php?";
 
-                        URL url = new URL(requestUrl);
-                        HttpURLConnection uc = (HttpURLConnection)url.openConnection();
+	                //Prepare parameter string
+	                StringBuilder sbPostData= new StringBuilder(mainUrl);
+	                sbPostData.append("authkey="+authkey);
+	                sbPostData.append("&mobiles="+mobiles);
+	                sbPostData.append("&message="+encoded_message);
+//	                sbPostData.append("&route="+route);
+	                sbPostData.append("&sender="+senderId);
 
-                        System.out.println(uc.getResponseMessage());
+	                //final string
+	                mainUrl = sbPostData.toString();
+	                try
+	                {
+	                    //prepare connection
+	                    myURL = new URL(mainUrl);
+	                    myURLConnection = myURL.openConnection();
+	                    myURLConnection.connect();
+	                    reader= new BufferedReader(new InputStreamReader(myURLConnection.getInputStream()));
+	                    //reading response
+	                    String response;
+	                    while ((response = reader.readLine()) != null)
+	                    //print response
+	                    System.out.println(response);
 
-                        uc.disconnect();
-
-                } catch(Exception ex) {
-                        System.out.println(ex.getMessage());
-
-                }
-        }
-
+	                    //finally close connection
+	                    reader.close();
+	                }
+	                catch (IOException e)
+	                {
+	                        e.printStackTrace();
+	                }
+            }
 }

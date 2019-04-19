@@ -28,14 +28,8 @@ class Female
 	    {
 	        data=value.get(i);
 	        val=Double.parseDouble(data);
-//	        System.out.println(data);
 	        Value.add(val);
 	    }
-//	    for(i=0;i<value.size();i++)
-//	    {
-//	      vl=value.get(i);
-////	       System.out.println(vl);
-//	    }
 	    br.close();
     }
     public int glucose()
