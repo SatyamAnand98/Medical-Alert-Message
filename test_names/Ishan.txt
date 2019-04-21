@@ -1,0 +1,15 @@
+Name:ISHAN KUMAR SIGH
+Gender:Male
+Phone:9900809871
+Age:21
+LAB:MEOW LAB
+Glucose:125.00
+Calcium:242
+Cholestrol:230
+RBC:5.9
+WBC:4400
+Hemoglobin:14.6
+Platelets:200001
+Sodium:137
+Potassium:5.2	
+Chloride:97

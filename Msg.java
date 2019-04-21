@@ -9,28 +9,11 @@ import java.net.URLEncoder;
 
 public class Msg {
 	@SuppressWarnings("deprecation")
-	public Msg(Read_FIle rd) {
+	public Msg(Read_File rd) {
 		//Your authentication key
-//		rakshat="272569AZalSl0t5cb4c48b";
-//		saraj="272570AS8Cq9FBIF5cb4c4a4";
-//		bihari="272563AL6Lqd7hn5cb4bc62";
-//		John="272574AfYXexim5cb4ca86";
-        String authkey = "272574AfYXexim5cb4ca86";
-        //Multiple mobiles numbers separated by comma
+        String authkey = "";
         String mobiles = rd.PhoneNo;
-        //Sender ID,While using route4 sender id should be 6 characters long.
         String senderId = "SSRLAB";
-        //Your message to send, Add URL encoding here.
-//        String message = "Test message";
-        if(rd.message.equals("")) {
-        	rd.message = "Dear,\n"+rd.Name+"\nAll your Blood Reports are NORMAL.";
-        }
-        else
-        	rd.message = "Dear,\n"+rd.Name+"\n you have a situation "+rd.message+"\nPlease visit Doctor ASAP!!";
-        //define route
-//        String route="1";
-
-        //Prepare Url
         URLConnection myURLConnection=null;
         URL myURL=null;
         BufferedReader reader=null;

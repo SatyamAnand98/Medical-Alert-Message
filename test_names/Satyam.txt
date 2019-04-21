@@ -1,0 +1,15 @@
+Name:Satyam Anand	
+Gender:Male
+Phone:9513868175
+Age:20
+LAB:Blood LAB
+Glucose:120.69
+Calcium:9.0
+Cholestrol:230
+RBC:5.0
+WBC:4700
+Hemoglobin:15
+Platelets:200000
+Sodium:136
+Potassium:4.9	
+Chloride:99

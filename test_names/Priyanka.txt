@@ -1,0 +1,15 @@
+Name:PRIYANKA MANUJA
+Gender:Female
+Phone:7985607320
+Age:21
+LAB:PAKISTANI LAB
+Glucose:127.00
+Calcium:8.8
+Cholestrol:242
+RBC:4.5
+WBC:9000
+Hemoglobin:12.3
+Platelets:400000
+Sodium:140
+Potassium:5.3	
+Chloride:105

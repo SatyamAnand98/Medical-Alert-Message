@@ -1,0 +1,15 @@
+Name:HIMANSHU SUMAN
+Gender:Male
+Phone:8949824819
+Age:22
+LAB:BJP WALA LAB
+Glucose:150.0
+Calcium:6.9
+Cholestrol:300
+RBC:5.0
+WBC:10000
+Hemoglobin:14.9
+Platelets:400000
+Sodium:140
+Potassium:5.0
+Chloride:97

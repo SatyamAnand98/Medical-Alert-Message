@@ -1,0 +1,15 @@
+Name:PUSHKAR PRABHAT
+Gender:Male
+Phone:9513868175
+Age:21
+LAB:SASTA TIKAU LAB
+Glucose:100.00
+Calcium:10.0
+Cholestrol:220
+RBC:5.5
+WBC:4000
+Hemoglobin:13
+Platelets:200009
+Sodium:130
+Potassium:4.7
+Chloride:95

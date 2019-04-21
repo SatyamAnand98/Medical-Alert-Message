@@ -1,0 +1,15 @@
+Name:BAIBHAV KUMAR
+Gender:Male
+Phone:7667931112
+Age:22
+LAB:Billa Prasad
+Glucose:100
+Calcium:8.7
+Cholestrol:200
+RBC:6.0
+WBC:5000
+Hemoglobin:16
+Platelets:200000
+Sodium:140
+Potassium:4.8	
+Chloride:100
