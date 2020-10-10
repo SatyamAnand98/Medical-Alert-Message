@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+package healthcare;
+
+=======
 package com.amazonaws.quickstart;
+>>>>>>> a6ac04c3868d12edf4976b4c781547e65f806875
 
 public class Female {
 	public Female(Read_File rd){    	

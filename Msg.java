@@ -1,4 +1,4 @@
-package healthcare;
+package com.amazonaws.quickstart;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,10 +8,10 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class Msg {
-	@SuppressWarnings("deprecation")
+        @SuppressWarnings("deprecation")
 	public Msg(Read_File rd) {
 		//Your authentication key
-        String authkey = "";
+        String authkey = "YOUR_AUTHENTICATION_KEY";
         String mobiles = rd.PhoneNo;
         String senderId = "SSRLAB";
         URLConnection myURLConnection=null;

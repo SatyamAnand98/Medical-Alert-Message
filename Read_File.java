@@ -1,4 +1,4 @@
-package healthcare;
+package com.amazonaws.quickstart;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

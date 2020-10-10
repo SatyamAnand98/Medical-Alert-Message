@@ -1,5 +1,4 @@
-package healthcare;
-
+package com.amazonaws.quickstart;
 
 public class Male {
 	public Male(Read_File rd){    	
